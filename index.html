@@ -17,9 +17,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            overflow: hidden;
+            min-height: 100vh;
+            overflow-x: hidden;
             perspective: 1000px;
+            cursor: none; /* Для кастомного курсора */
         }
 
         .container {
@@ -33,6 +34,7 @@
             animation: fadeIn 1.5s ease-in-out;
             position: relative;
             z-index: 1;
+            margin: 20px;
         }
 
         header h1 {
@@ -71,6 +73,43 @@
             background: linear-gradient(135deg, #005f8b, #0088cc);
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Блок с преимуществами */
+        .features {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            width: 200px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature i {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .feature h3 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            font-size: 0.9em;
+            opacity: 0.8;
         }
 
         /* Слайдер с отзывами */
@@ -128,6 +167,107 @@
             background: rgba(255, 255, 255, 0.4);
         }
 
+        /* Форма обратной связи */
+        .contact-form {
+            margin-top: 40px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .contact-form button {
+            background: linear-gradient(135deg, #0088cc, #005f8b);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background: linear-gradient(135deg, #005f8b, #0088cc);
+        }
+
+        /* Анимация появления при прокрутке */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Темная тема */
+        body.dark-theme {
+            background: linear-gradient(135deg, #1a1a1a, #333);
+            color: #fff;
+        }
+
+        .dark-theme .container {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .dark-theme .telegram-button {
+            background: linear-gradient(135deg, #333, #555);
+        }
+
+        .dark-theme .telegram-button:hover {
+            background: linear-gradient(135deg, #555, #333);
+        }
+
+        .dark-theme .feature {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Переключатель темы */
+        .theme-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            color: #fff;
+            transition: background 0.3s ease;
+            z-index: 1000;
+        }
+
+        .theme-switcher:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Кастомный курсор */
+        .custom-cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: difference;
+            z-index: 1000;
+        }
+
         /* Анимация появления */
         @keyframes fadeIn {
             from {
@@ -139,84 +279,20 @@
                 transform: translateY(0);
             }
         }
-
-        /* Анимированный фон */
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-            z-index: -1;
-            animation: moveBackground 10s linear infinite;
-        }
-
-        @keyframes moveBackground {
-            0% {
-                transform: translateY(0) translateX(0);
-            }
-            50% {
-                transform: translateY(-50%) translateX(-50%);
-            }
-            100% {
-                transform: translateY(0) translateX(0);
-            }
-        }
-
-        /* Параллакс-эффект */
-        .parallax {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
-            z-index: -2;
-            transform: translateZ(-1px) scale(2);
-        }
-
-        /* Дополнительный блок с преимуществами */
-        .features {
-            margin-top: 40px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .feature {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            width: 200px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .feature:hover {
-            transform: translateY(-10px);
-        }
-
-        .feature i {
-            font-size: 2em;
-            margin-bottom: 10px;
-        }
-
-        .feature h3 {
-            font-size: 1.2em;
-            margin-bottom: 10px;
-        }
-
-        .feature p {
-            font-size: 0.9em;
-            opacity: 0.8;
-        }
     </style>
 </head>
 <body>
-    <div class="parallax"></div>
+    <!-- Частицы на фоне -->
+    <div id="particles-js"></div>
+
+    <!-- Кастомный курсор -->
+    <div class="custom-cursor" id="custom-cursor"></div>
+
+    <!-- Переключатель темы -->
+    <button class="theme-switcher" id="theme-switcher">
+        <i class="fas fa-moon"></i>
+    </button>
+
     <div class="container">
         <header>
             <h1>Добро пожаловать!</h1>
@@ -228,7 +304,7 @@
             </a>
 
             <!-- Блок с преимуществами -->
-            <div class="features">
+            <div class="features fade-in">
                 <div class="feature">
                     <i class="fas fa-bolt"></i>
                     <h3>Быстро</h3>
@@ -247,7 +323,7 @@
             </div>
 
             <!-- Слайдер с отзывами -->
-            <div class="testimonials">
+            <div class="testimonials fade-in">
                 <h2>Отзывы</h2>
                 <div class="slider">
                     <div class="slide">
@@ -268,13 +344,70 @@
                     <button id="next-slide"><i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
+
+            <!-- Форма обратной связи -->
+            <div class="contact-form fade-in">
+                <h2>Свяжитесь с нами</h2>
+                <form id="feedback-form">
+                    <input type="text" placeholder="Ваше имя" required>
+                    <input type="email" placeholder="Ваш email" required>
+                    <textarea placeholder="Ваше сообщение" rows="5" required></textarea>
+                    <button type="submit">Отправить</button>
+                </form>
+            </div>
         </main>
         <footer>
             <p>© 2023 Ваш сайт. Все права защищены.</p>
         </footer>
     </div>
 
+    <!-- Подключение Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
+        // Настройка частиц
+        particlesJS.load('particles-js', 'particles.json', function() {
+            console.log('Particles.js loaded!');
+        });
+    </script>
+
+    <script>
+        // Анимация при прокрутке
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        const checkVisibility = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementBottom = element.getBoundingClientRect().bottom;
+                if (elementTop < window.innerHeight && elementBottom > 0) {
+                    element.classList.add('visible');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', checkVisibility);
+        window.addEventListener('load', checkVisibility);
+
+        // Переключение темы
+        const themeSwitcher = document.getElementById('theme-switcher');
+        const body = document.body;
+
+        themeSwitcher.addEventListener('click', () => {
+            body.classList.toggle('dark-theme');
+            if (body.classList.contains('dark-theme')) {
+                themeSwitcher.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                themeSwitcher.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        });
+
+        // Кастомный курсор
+        const cursor = document.getElementById('custom-cursor');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.pageX + 'px';
+            cursor.style.top = e.pageY + 'px';
+        });
+
         // Слайдер с отзывами
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
@@ -300,6 +433,13 @@
         setInterval(() => {
             showSlide(currentSlide + 1);
         }, 5000);
+
+        // Обработка формы
+        document.getElementById('feedback-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Спасибо за ваше сообщение! Мы свяжемся с вами в ближайшее время.');
+            e.target.reset();
+        });
     </script>
 </body>
 </html>
