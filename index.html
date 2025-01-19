@@ -64,6 +64,7 @@
             border-radius: 50px;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px; /* Отступ снизу */
         }
 
         .telegram-button i {
@@ -72,6 +73,30 @@
         }
 
         .telegram-button:hover {
+            background: linear-gradient(135deg, #005f8b, #0088cc);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            animation: pulse 1s infinite;
+        }
+
+        /* Кнопка "Дополнительная информация" */
+        .info-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2em;
+            color: #fff;
+            background: linear-gradient(135deg, #0088cc, #005f8b);
+            text-decoration: none;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px; /* Отступ снизу */
+        }
+
+        .info-button:hover {
             background: linear-gradient(135deg, #005f8b, #0088cc);
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
@@ -339,6 +364,18 @@
             right: 10px;
             font-size: 1.5em;
             cursor: pointer;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.1);
+            transition: background 0.3s ease;
+        }
+
+        .close-popup:hover {
+            background: rgba(0, 0, 0, 0.2);
         }
 
         /* Карусель изображений */
@@ -376,6 +413,11 @@
             border-radius: 50%;
             font-size: 1.5em;
             transition: background 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .carousel-control:hover {
@@ -437,12 +479,13 @@
             <p>Присоединяйтесь к нашему Telegram-каналу, чтобы быть в курсе всех новостей и обновлений.</p>
         </header>
         <main>
+            <!-- Кнопка Telegram -->
             <a href="https://t.me/resgg" class="telegram-button">
                 <i class="fab fa-telegram-plane"></i> Перейти в Telegram
             </a>
 
-            <!-- Кнопка для открытия попапа -->
-            <button id="open-popup" class="telegram-button" style="border-radius: 50%; padding: 15px;">
+            <!-- Кнопка "Дополнительная информация" -->
+            <button id="open-popup" class="info-button">
                 <i class="fas fa-info-circle"></i>
             </button>
 
